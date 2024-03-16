@@ -1,0 +1,15 @@
+<div *ngIf="item">
+  <h1>Item name: {{ item.name }}</h1>
+  <p>Item description: {{ item.description }}</p>
+  <button (click)="deleteItem(item.id)">Delete item</button>
+  <button (click)="toggleEditMode()">Edit</button>
+  <form *ngIf="editMode" [formGroup]="form" (ngSubmit)="updateItem()">
+    <label for="name">First Name: </label>
+    <input id="name" type="text" formControlName="name" />
+
+    <label for="description">Description: </label>
+    <input id="description" type="text" formControlName="description" />
+
+    <button type="submit">Edit</button>
+  </form>
+</div>

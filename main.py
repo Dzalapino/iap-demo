@@ -2,11 +2,22 @@ from fastapi import FastAPI
 from sqlmodel import SQLModel
 from repository.db_connection import engine
 from server.item_controller import item_router
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = ['http://localhost:4200', 'http://localhost']
 
 SQLModel.metadata.create_all(engine)
 
 # Create a FastAPI instance
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Include the routers for controllers
 app.include_router(item_router)

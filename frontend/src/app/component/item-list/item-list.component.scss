@@ -1,0 +1,9 @@
+.item {
+  display: block;
+  padding: 20px;
+  width: fit-content;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
